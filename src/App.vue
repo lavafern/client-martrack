@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <appMap></appMap>
+    <!-- <appMap2></appMap2> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import appMap from './components/map/appMap.vue'
+// import appMap2 from './components/map2/appMap2.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    appMap,
+    // appMap2,
   }
 }
 </script>
