@@ -2,9 +2,8 @@
     <div>
 
         <h1 id="w">hello {{ name }}</h1>
-        <!-- <input v-model="target" type="text"> -->
-        <button @click="klikwou">move point</button>
-        <button @click="addPointFeatureLayer">add point</button>
+        <input v-model="target" type="text">
+        <button @click="movePoint">move point</button>
         <p>{{ rerender.toString() }}</p>
         <div id="viewDiv"></div>
 
