@@ -4,6 +4,7 @@ import MapView from "@arcgis/core/views/MapView"
 import Graphic from "@arcgis/core/Graphic"
 import { appsocket } from "@/assets/socketio";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
+import { getAllVessel } from "@/assets/api/map";
 
 
 export default {
@@ -28,7 +29,9 @@ export default {
         this.assignMap()
         this.assignMapView()
         this.addFeatureLayer()
+        this.getVesselLastData()
         this.socketEvenListener()
+
 
     },
     methods: {
@@ -230,6 +233,23 @@ export default {
 
             } catch (err) {
                 console.log('err in selectspecific>',err);
+            }
+        },
+        async getVesselLastData() {
+            try {
+                const data = await getAllVessel()
+
+                for (let i = 0; i < data.length; i++) {
+                    
+                    new Promise(() => {
+                        const {mmsi,lat,long} =data[i]
+                        this.movePoint(mmsi,long,lat)
+                    })
+                    
+                }
+                console.log('allpoint',this.getAllPoints());
+            } catch (err) {
+                console.log('err : ',err);
             }
         }
     },
